@@ -33,7 +33,7 @@ async function pieChart(url, ac_no, id) {
     plotData.push(newObj);
 
     const layout = {
-        showlegend: true,
+        showlegend: false,
         font:{
             family: 'Lato, sans-serif',
             color: 'rgba(245,246,249,1)'
@@ -73,39 +73,30 @@ async function traces(url, party) {
     return newObj;
 }
 
-async function getData(rows) {
-    let plotData = [];
-
-    rows.forEach(async ele => {
-        let partyname = ele.split(",");
-        let t = await traces("datasets/d.json", partyname[1]);
-        plotData.push(t);
-    });
-
-    return plotData;
-}
-
 
 async function barChart(Title) {
+    let plotData = [];
 
     let data = await fetch("datasets/csv/allParties.csv")
     let dataset = await data.text();
     let rows = dataset.split("\r\n");
 
+    for(let i = 0; i < rows.length; i++) {
+        let partyname = rows[i].split(",");
+        let t = await traces("datasets/d.json", partyname[1]);
+        plotData.push(t);
+    }
+
     const layout = {
         title: Title,
-        height: 7000,
+        showlegend: false,
+        margin: {
+            l: 170
+        },
         font:{
             family: 'Lato, sans-serif',
             color: 'rgba(245,246,249,1)'
           },
-        margin: {
-            l: 200,
-            r: 20,
-            t: 50,
-            b: 70,
-            pad: 10
-        },
         barmode: 'stack',
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
@@ -115,10 +106,8 @@ async function barChart(Title) {
     };
     const config = { responsive: true };
 
-    const plotData = await getData(rows);
-    setTimeout(() => {
-        Plotly.newPlot(map, plotData, layout, config);
-    }, 2000);
+
+    Plotly.newPlot(map, plotData, layout, config);
 }
 
 

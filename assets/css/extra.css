@@ -1,4 +1,5 @@
 .chart {
     border-radius: 10px;
-    overflow: hidden;
+    overflow: scroll;
+    padding: 5%;
 }
