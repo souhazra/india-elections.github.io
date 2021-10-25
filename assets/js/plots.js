@@ -90,8 +90,10 @@ async function barChart(Title) {
     const layout = {
         title: Title,
         showlegend: false,
+        height: 7000,
         margin: {
-            l: 170
+            l: 150,
+            r: 10
         },
         font:{
             family: 'Lato, sans-serif',
