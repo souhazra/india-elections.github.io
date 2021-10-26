@@ -68,7 +68,7 @@ async function addOptions() {
         iDiv.appendChild(div3);
         document.querySelector('.options-container').appendChild(iDiv);
     })
-    console.log(rows);
+    // console.log(rows);
     searchBar();
 }
 
