@@ -8,6 +8,19 @@
     padding: 32px;
 }
 
+.chart-row {
+    margin-bottom: 50px;
+}
+
+.chart-row .col-md-6{
+    max-height: 590px;
+    overflow-y: scroll;
+}
+
+.col-md-6::-webkit-scrollbar {
+    display: none;
+  }
+
 .select-box {
     position: relative;
     display: flex;
