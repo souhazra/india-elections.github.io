@@ -2,6 +2,77 @@
 const colours = { BJP: "rgb(255, 165, 0)", AITC: "rgb(0,255,0)", NOTA: "rgb(255,0,0)", IND: "rgb(0,0,255)", RSSCMJP: "rgb(0,255,255)" }
 
 
+function searchBar() {
+    const selected = document.querySelector(".selected");
+    const optionsContainer = document.querySelector(".options-container");
+    const searchBox = document.querySelector(".search-box input");
+
+    const optionsList = document.querySelectorAll(".option");
+
+    selected.addEventListener("click", () => {
+        optionsContainer.classList.toggle("active");
+
+        searchBox.value = "";
+        filterList("");
+
+        if (optionsContainer.classList.contains("active")) {
+            searchBox.focus();
+        }
+    });
+
+    optionsList.forEach(o => {
+        o.addEventListener("click", () => {
+            optionsList.classList.toggle("selected");
+        });
+    });
+
+    searchBox.addEventListener("keyup", function (e) {
+        filterList(e.target.value);
+    });
+
+    const filterList = searchTerm => {
+        searchTerm = searchTerm.toLowerCase();
+        optionsList.forEach(option => {
+            let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
+            if (label.indexOf(searchTerm) != -1) {
+                option.style.display = "block";
+            } else {
+                option.style.display = "none";
+            }
+        });
+    };
+}
+
+async function addOptions() {
+    const names = await fetch('datasets/csv/List_of_Successful_Candidates.csv');
+    const data = await names.text();
+    const rows = data.split('\r\n').splice(1);
+    rows.forEach(ele => {
+        let r = ele.split(',');
+        let iDiv = document.createElement('div');
+
+        iDiv.setAttribute('class', 'option');
+        iDiv.style.display = 'block';
+
+        let div2 = document.createElement('input');
+
+        div2.setAttribute('type', 'checkbox');
+        div2.setAttribute('class', 'radio');
+        div2.setAttribute('id', `${r[1]}`);
+        div2.setAttribute('name', 'category');
+        iDiv.appendChild(div2);
+
+        let div3 = document.createElement('label');
+        div3.setAttribute('for', `${r[1]}`);
+        div3.innerHTML = `${r[1]}`;
+
+        iDiv.appendChild(div3);
+        document.querySelector('.options-container').appendChild(iDiv);
+    })
+    // console.log(rows);
+    searchBar();
+}
+
 async function pieChart(url, ac_no, id) {
     let plotData = [];
     const response = await fetch(url);
@@ -92,8 +163,8 @@ async function barChart(Title) {
         showlegend: false,
         height: 7000,
         margin: {
-            l: 150,
-            r: 10
+            l: 140,
+            r: 15
         },
         font:{
             family: 'Lato, sans-serif',
@@ -113,5 +184,6 @@ async function barChart(Title) {
 }
 
 
-pieChart("datasets/d.json", 1, "myDiv");
+addOptions();
+// pieChart("datasets/d.json", 1, "myDiv");
 barChart("Constituency Results in '%'");
