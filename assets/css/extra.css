@@ -1,7 +1,7 @@
 .chart {
     border-radius: 10px;
     width: 100%;
-    overflow-x: scroll;
+    overflow: scroll;
 }
 
 .container {
