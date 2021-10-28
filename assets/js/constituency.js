@@ -68,7 +68,7 @@ async function addOptions() {
         iDiv.appendChild(div3);
         document.querySelector('.options-container').appendChild(iDiv);
     })
-    // console.log(rows);
+    console.log(rows);
     searchBar();
 }
 
@@ -82,6 +82,7 @@ async function pieChart(url, ac_n, id) {
     const response = await fetch(url);
     let data = await response.json();
     const dataset = data.filter(el => el["AC NAME"] === ac_n);
+    console.log(ac_n)
 
 
     const newObj = {};
@@ -132,4 +133,5 @@ async function pieChart(url, ac_n, id) {
 }
 
 
+// searchBar();
 pieChart("datasets/d.json", "Mekliganj", "myDiv");
