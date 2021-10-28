@@ -82,7 +82,7 @@ async function pieChart(url, ac_n, id) {
     const response = await fetch(url);
     let data = await response.json();
     const dataset = data.filter(el => el["AC NAME"] === ac_n);
-    console.log(ac_n)
+    // console.log(ac_n)
 
 
     const newObj = {};
