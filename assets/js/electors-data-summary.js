@@ -74,8 +74,10 @@ async function pc2(url, no, id) {
 
     plotData.push(newObj);
 
+    let T = d[0].split(',');
+
     const layout = {
-        title: d[0],
+        title: T[1],
         showlegend: true,
         automargin: true,
         legend: {

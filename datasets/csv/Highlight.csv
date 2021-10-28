@@ -1,4 +1,7 @@
 Performance of Contesting Candidates,Male,Female,Third Gender,Total
 No. Of Contestants,1876,240,0,2116
 Elected,252,40,0,292
-Forfeited Deposits,1342,154,0,1496
+Forfeited Deposits,1342,154,0,1496;
+NO. of Contestants
+NO. of Contestants in a Constituency,1,2,3,4,5,6-10,11-15,Above 15
+NO Of Such CONSTITUENCIES,0,0,3,21,55,185,28,0
