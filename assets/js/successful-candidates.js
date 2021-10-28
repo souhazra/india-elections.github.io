@@ -15,4 +15,4 @@ async function addData() {
     })
 }
 
-addData();
+// addData();
