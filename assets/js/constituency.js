@@ -72,7 +72,7 @@ async function addOptions() {
     searchBar();
 }
 
-addOptions();
+// addOptions();
 
 const colours = { BJP: "rgb(255, 165, 0)", AITC: "rgb(0,255,0)", NOTA: "rgb(255,0,0)", IND: "rgb(0,0,255)", RSSCMJP: "rgb(0,255,255)" }
 
@@ -133,5 +133,5 @@ async function pieChart(url, ac_n, id) {
 }
 
 
-// searchBar();
+searchBar();
 pieChart("datasets/d.json", "Mekliganj", "myDiv");
