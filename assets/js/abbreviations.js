@@ -1,5 +1,5 @@
 async function addData() {
-    const names = await fetch('datasets/csv/wc.csv');
+    const names = await fetch('datasets/csv/abbreviation.csv');
     const data = await names.text();
     const rows = data.split('\r\n').splice(1);
     console.log(rows);
