@@ -20,7 +20,7 @@ function searchBar() {
         o.addEventListener("click", () => {
             selected.innerHTML = o.querySelector("label").innerHTML;
             optionsContainer.classList.remove("active");
-            Chart("datasets/csv/constituency.csv", o.querySelector("label").innerHTML);
+            pieChart("datasets/d.json", o.querySelector("label").innerHTML, "myDiv");
         });
     });
 
@@ -75,96 +75,46 @@ async function addOptions() {
 // addOptions();
 
 const colours = { BJP: "rgb(255, 165, 0)", AITC: "rgb(0,255,0)", NOTA: "rgb(255,0,0)", IND: "rgb(0,0,255)", RSSCMJP: "rgb(0,255,255)" }
-const sex = ["male", "female", "third gender", "total"]
 
-async function bc1(row, f, t, title, id) {
+
+async function pieChart(url, ac_n, id) {
     let plotData = [];
+    const response = await fetch(url);
+    let data = await response.json();
+    const dataset = data.filter(el => el["AC NAME"] === ac_n);
+    // console.log(ac_n)
 
-
-    console.log(row);
-
-
-    for (let i = f; i <= t; i++) {
-        const newObj = {};
-
-        newObj.x = [];
-        newObj.y = [];
-        newObj.type = "bar";
-        let data = row[i].split(',');
-        newObj.name = data[0];
-        for (let j = 1; j < data.length; j++) {
-            if (data[j] > 0) {
-                newObj.y.push(data[j]);
-                newObj.x.push(sex[j - 1])
-            }
-        }
-        plotData.push(newObj);
-    }
-
-
-
-    const layout = {
-        title: title,
-        showlegend: true,
-        hovermode: 'closest',
-        automargin: true,
-        legend: {
-            "orientation": "h",
-            x: 0,
-            y: -0.3
-        },
-        font: {
-            family: 'Lato, sans-serif',
-            color: 'rgba(245,246,249,1)'
-        },
-        paper_bgcolor: 'rgba(0,0,0,0)',
-        plot_bgcolor: 'rgba(0,0,0,0)'
-    };
-    const config = {
-        responsive: true,
-        displayModeBar: false
-    };
-
-
-    Plotly.newPlot(id, plotData, layout, config);
-}
-
-
-async function bc2(row, f, t, title, id) {
-    let plotData = [];
-
-
-    console.log(row);
 
     const newObj = {};
 
-    newObj.x = [];
-    newObj.y = [];
-    newObj.type = "bar";
+    newObj.values = [];
+    newObj.labels = [];
+    newObj.marker = { colors: [] }
+    newObj.hole = 0.4;
+    let count = 0;
+    newObj.type = "pie";
 
-
-    for (let i = f; i <= t; i++) {
-        let data = row[i].split(',');
-        if (data[1] > 0) {
-            newObj.x.push(data[0])
-            newObj.y.push(data[1])
+    dataset.forEach(element => {
+        if (element["PARTY"] === "AITC" || element["PARTY"] === "BJP" || element["PARTY"] === "NOTA" || element["PARTY"] === "RSSCMJP" || element["PARTY"] === "IND") {
+            newObj.values.push(element.TOTAL);
+            newObj.labels.push(`${element["CANDIDATE NAME"]}(${element["PARTY"]})`);
+            newObj.marker.colors.push(colours[element.PARTY])
+        } else {
+            count += element.TOTAL;
         }
-    }
+    });
+    newObj.values.push(count);
+    newObj.labels.push("OTHER");
+    newObj.marker.colors.push("rgb(128,128,128)");
 
     plotData.push(newObj);
 
-
-
     const layout = {
-        title: title,
-        showlegend: false,
-        hovermode: 'closest',
-        automargin: true,
+        showlegend: true,
         legend: {
             "orientation": "h",
-            automargin: true,
             x: 0,
-            y: -0.3
+            y: 1.5
         },
         font: {
             family: 'Lato, sans-serif',
@@ -180,32 +130,8 @@ async function bc2(row, f, t, title, id) {
 
 
     Plotly.newPlot(id, plotData, layout, config);
-}
-
-
-async function Chart(url, ac_n) {
-    const response = await fetch(url);
-    let data = await response.text();
-    let dataset = data.split('\r\n<br>');
-    // console.log(data)
-    // console.log(dataset)
-
-    let row;
-
-    for (let i = 0; i < dataset.length; i++) {
-        let t = dataset[i].split('\r\n');
-        if (t[0].split('-')[2] === ac_n) {
-            row = t;
-            break;
-        }
-    }
-    // console.log(row)
-    bc1(row, 4, 8, 'Candidate', 'con1');
-    bc1(row, 10, 13, 'Electors', 'con2');
-    bc1(row, 15, 15, 'Voters', 'con3');
-    bc2(row, 22, 31, 'Votes', 'con4');
 }
 
 
 searchBar();
-Chart("datasets/csv/constituency.csv", "Mekliganj");
+pieChart("datasets/d.json", "Mekliganj", "myDiv");
