@@ -2,7 +2,7 @@ async function bc1(url, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const dataset = data.split("\r\n");
+    const dataset = data.split("\n");
     // console.log(dataset)
     
     dataset.forEach(ele => {

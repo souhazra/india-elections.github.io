@@ -1,7 +1,7 @@
 async function addData() {
     const names = await fetch('datasets/csv/allParties.csv');
     const data = await names.text();
-    const rows = data.split('\r\n');
+    const rows = data.split('\n');
     console.log(rows);
     rows.forEach(ele => {
         let r = ele.split(',');
