@@ -194,6 +194,7 @@ async function Chart(url, ac_n) {
 
     for (let i = 0; i < dataset.length; i++) {
         let t = dataset[i].split('\n');
+        console.log(t)
         if (t[0].split('-')[2] === ac_n) {
             row = t;
             break;
@@ -202,7 +203,7 @@ async function Chart(url, ac_n) {
     // console.log(row)
     bc1(row, 4, 8, 'Candidate', 'con1');
     bc1(row, 10, 13, 'Electors', 'con2');
-    bc1(row, 15, 15, 'Voters', 'con3');
+    bc1(row, 16, 16, 'Voters', 'con3');
     bc2(row, 22, 31, 'Votes', 'con4');
 }
 
