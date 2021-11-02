@@ -4,10 +4,10 @@ async function bc1(url, no, id) {
     let data = await response.text();
     const d = data.split('\r\n').splice(1);
     no = parseInt(no, 10);
-    // console.log(d)
+    console.log(d)
 
     let t = d[no].split(",");
-    // console.log(t)
+    console.log(t)
 
 
     const newObj = {};
