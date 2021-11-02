@@ -6,7 +6,7 @@ async function bc1(url, no, id) {
     no = parseInt(no, 10);
     console.log(d)
 
-    let t = d[no].split(",");
+    let t = d[no].split(',');
     console.log(t)
 
 
