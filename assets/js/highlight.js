@@ -3,7 +3,7 @@ async function bc1(url, no, id) {
     const response = await fetch(url);
     let data = await response.text();
     console.log(data);
-    const d = data.split('\r\n').splice(1);
+    const d = await data.split('\r\n').splice(1);
     console.log(d)
 
     let t = d[no].split(',');
