@@ -54,7 +54,7 @@ async function pc2(url, no, id) {
     let data = await response.text();
     const dataset = data.split("@").splice(1);
     const row = dataset[no];
-    const d = row.split('\r\n').splice(1);
+    const d = row.split('\n').splice(1);
     // console.log(d)
     // console.log(dataset)
 
@@ -106,7 +106,7 @@ async function bc1(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const d = data.split('\r\n').splice(1);
+    const d = data.split('\n').splice(1);
     // console.log(d)
 
     let t = d[no].split(",");

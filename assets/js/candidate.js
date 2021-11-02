@@ -3,7 +3,7 @@ async function bc1(url, no, id) {
     const response = await fetch(url);
     let data = await response.text();
     const dataset = data.split("<br>");
-    const rows = dataset[no].split("\r\n").splice(1);
+    const rows = dataset[no].split("\n").splice(1);
     // console.log(rows)
     // console.log(dataset)
 

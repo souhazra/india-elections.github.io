@@ -52,7 +52,7 @@ async function pc1(url, no, id) {
     const d = data.split(';').splice(1);
     // console.log(d)
 
-    let t = d[no].split("\r\n").splice(1);
+    let t = d[no].split("\n").splice(1);
     // console.log(t)
 
 

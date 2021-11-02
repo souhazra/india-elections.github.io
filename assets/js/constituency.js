@@ -45,7 +45,7 @@ function searchBar() {
 async function addOptions() {
     const names = await fetch('datasets/csv/List_of_Successful_Candidates.csv');
     const data = await names.text();
-    const rows = data.split('\r\n').splice(1);
+    const rows = data.split('\n').splice(1);
     rows.forEach(ele => {
         let r = ele.split(',');
         let iDiv = document.createElement('div');
@@ -186,14 +186,14 @@ async function bc2(row, f, t, title, id) {
 async function Chart(url, ac_n) {
     const response = await fetch(url);
     let data = await response.text();
-    let dataset = data.split('\r\n<br>');
+    let dataset = data.split('\n<br>');
     // console.log(data)
     // console.log(dataset)
 
     let row;
 
     for (let i = 0; i < dataset.length; i++) {
-        let t = dataset[i].split('\r\n');
+        let t = dataset[i].split('\n');
         if (t[0].split('-')[2] === ac_n) {
             row = t;
             break;
