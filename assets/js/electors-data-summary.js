@@ -57,8 +57,6 @@ async function bc1(url, no, id) {
     const d = row.split('\n').splice(1);
     // console.log(d)
     // console.log(dataset)
-    
-    console.log(d)
 
 
     for (let i = 1; i < d.length - 1; i++) {
@@ -69,7 +67,7 @@ async function bc1(url, no, id) {
         newObj.type = "bar";
 
         let t = d[i].split(",").splice(1);
-        console.log(t)
+        // console.log(t)
         newObj.name = t[0];
         for (let j = 1; j <= t.length; j++) {
             newObj.y.push(t[j]);

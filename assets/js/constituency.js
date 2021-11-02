@@ -68,7 +68,7 @@ async function addOptions() {
         iDiv.appendChild(div3);
         document.querySelector('.options-container').appendChild(iDiv);
     })
-    console.log(rows);
+    // console.log(rows);
     searchBar();
 }
 
@@ -81,7 +81,7 @@ async function bc1(row, f, t, title, id) {
     let plotData = [];
 
 
-    console.log(row);
+    // console.log(row);
 
 
     for (let i = f; i <= t; i++) {
@@ -134,7 +134,7 @@ async function bc2(row, f, t, title, id) {
     let plotData = [];
 
 
-    console.log(row);
+    // console.log(row);
 
     const newObj = {};
 
@@ -194,7 +194,7 @@ async function Chart(url, ac_n) {
 
     for (let i = 0; i < dataset.length; i++) {
         let t = dataset[i].split('\n');
-        console.log(t)
+        // console.log(t)
         if (t[0].split('-')[2] === ac_n) {
             row = t;
             break;

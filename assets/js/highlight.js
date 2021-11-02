@@ -2,12 +2,12 @@ async function bc1(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    console.log(data);
+    // console.log(data);
     const d = data.split('\n').splice(1);
-    console.log(d)
+    // console.log(d)
 
     let t = d[no].split(',');
-    console.log(t)
+    // console.log(t)
 
 
     const newObj = {};
@@ -49,11 +49,11 @@ async function pc1(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const d = data.split('<br>');
-    console.log(d)
+    const d = data.split('<>');
+    // console.log(d)
 
     let t = d[no].split("\n").splice(1);
-    console.log(t)
+    // console.log(t)
 
 
     const newObj = {};
@@ -99,7 +99,7 @@ async function pc2(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const d = data.split('<br>');
+    const d = data.split('<>');
     // console.log(d)
 
     let t = d[no].split("\n").splice(1);
