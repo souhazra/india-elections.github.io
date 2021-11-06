@@ -16,3 +16,6 @@ async function addData() {
 }
 
 // addData();
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );

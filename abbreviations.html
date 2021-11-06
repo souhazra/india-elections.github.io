@@ -19,6 +19,9 @@
 		});
 	</script>
 
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />	
+
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/atlantis.min.css">
@@ -366,64 +369,66 @@
 
 		<div class="main-panel">
 			<div class="content">
-				<table class="table table-dark table-striped">
-					<thead>
-						<tr>
-							<th scope="col">ABBREVIATIONS</th>
-							<th scope="col">DESCRIPTIONS</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>FD</td>
-							<td>Forfeited Deposits</td>
-						</tr>
-						<tr>
-							<td>GEN</td>
-							<td>General Constituency</td>
-						</tr>
-						<tr>
-							<td>SC</td>
-							<td>Reserved for Scheduled Castes</td>
-						</tr>
-						<tr>
-							<td>ST</td>
-							<td>Reserved for Scheduled Tribes</td>
-						</tr>
-						<tr>
-							<td>M</td>
-							<td>Male</td>
-						</tr>
-						<tr>
-							<td>F</td>
-							<td>Female</td>
-						</tr>
-						<tr>
-							<td>O</td>
-							<td>Third Gender</td>
-						</tr>
-						<tr>
-							<td>T</td>
-							<td>Total</td>
-						</tr>
-						<tr>
-							<td>N</td>
-							<td>National Party</td>
-						</tr>
-						<tr>
-							<td>S</td>
-							<td>State Party</td>
-						</tr>
-						<tr>
-							<td>U</td>
-							<td>Registered (Unrecognised) Party</td>
-						</tr>
-						<tr>
-							<td>Z</td>
-							<td>Independent</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="container">
+					<table class="table table-dark table-striped m-1" id="myTable">
+						<thead>
+							<tr>
+								<th scope="col">ABBREVIATIONS</th>
+								<th scope="col">DESCRIPTIONS</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>FD</td>
+								<td>Forfeited Deposits</td>
+							</tr>
+							<tr>
+								<td>GEN</td>
+								<td>General Constituency</td>
+							</tr>
+							<tr>
+								<td>SC</td>
+								<td>Reserved for Scheduled Castes</td>
+							</tr>
+							<tr>
+								<td>ST</td>
+								<td>Reserved for Scheduled Tribes</td>
+							</tr>
+							<tr>
+								<td>M</td>
+								<td>Male</td>
+							</tr>
+							<tr>
+								<td>F</td>
+								<td>Female</td>
+							</tr>
+							<tr>
+								<td>O</td>
+								<td>Third Gender</td>
+							</tr>
+							<tr>
+								<td>T</td>
+								<td>Total</td>
+							</tr>
+							<tr>
+								<td>N</td>
+								<td>National Party</td>
+							</tr>
+							<tr>
+								<td>S</td>
+								<td>State Party</td>
+							</tr>
+							<tr>
+								<td>U</td>
+								<td>Registered (Unrecognised) Party</td>
+							</tr>
+							<tr>
+								<td>Z</td>
+								<td>Independent</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 			<footer class="footer">
 				<!-- <div class="container-fluid">
@@ -601,6 +606,7 @@
 
 	<!-- Rahul -->
 	<script src="./assets/js/abbreviations.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
 </body>
 
 </html>
