@@ -42,6 +42,20 @@ function searchBar() {
 }
 
 
+async function table(row) {
+
+    const arr = [['wpos','wparty','wcan','wvotes'],['rpos','rparty','rcan','rvotes']];
+    
+    for(let i = 42; i <= 43; i++) {
+        let data = row[i].split(',');
+        for(let j = 0; j < data.length; j++) {
+            let d = document.querySelector(`#${arr[i-42][j]}`);
+            d.innerHTML = data[j];
+        }
+    }
+}
+
+
 async function addOptions() {
     const names = await fetch('datasets/csv/List_of_Successful_Candidates.csv');
     const data = await names.text();
@@ -205,6 +219,7 @@ async function Chart(url, ac_n) {
     bc1(row, 10, 13, 'Electors', 'con2');
     bc1(row, 16, 16, 'Voters', 'con3');
     bc2(row, 22, 31, 'Votes', 'con4');
+    table(row);
 }
 
 
