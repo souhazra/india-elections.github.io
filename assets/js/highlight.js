@@ -12,9 +12,10 @@ async function bc1(url, no, id) {
 
     const newObj = {};
 
+    newObj.measure = ['relative','relative','relative','total']
     newObj.x = ["male", "female", "third gender", 'total'];
     newObj.y = [t[1], t[2], t[3], t[4]];
-    newObj.type = "bar";
+    newObj.type = "waterfall";
 
 
     plotData.push(newObj);

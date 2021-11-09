@@ -172,7 +172,7 @@ async function bc2(row, f, t, title, id) {
     const layout = {
         title: title,
         showlegend: false,
-        hovermode: 'closest',
+        // hovermode: 'closest',
         automargin: true,
         legend: {
             "orientation": "h",

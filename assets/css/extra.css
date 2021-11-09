@@ -209,3 +209,7 @@ select {
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     color: white !important;
 }
+
+option {
+    background-color: #2f3640;
+}
