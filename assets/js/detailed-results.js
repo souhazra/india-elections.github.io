@@ -89,16 +89,19 @@ async function pieChart(url, ac_n, id) {
 
     newObj.values = [];
     newObj.labels = [];
+    newObj.text = [];
     newObj.marker = { colors: [] }
     newObj.hole = 0.4;
     let count = 0;
     newObj.type = "pie";
+    newObj.textinfo = 'percent'
 
     dataset.forEach(element => {
         if (element["PARTY"] === "AITC" || element["PARTY"] === "BJP" || element["PARTY"] === "NOTA" || element["PARTY"] === "RSSCMJP" || element["PARTY"] === "IND") {
             newObj.values.push(element.TOTAL);
-            newObj.labels.push(`${element["CANDIDATE NAME"]}(${element["PARTY"]})`);
-            newObj.marker.colors.push(colours[element.PARTY])
+            newObj.labels.push(`${element["CANDIDATE NAME"]}`);
+            newObj.marker.colors.push(colours[element.PARTY]);
+            newObj.text.push(`Sex: ${element.SEX}<br>Age: ${element.AGE}<br>Party: ${element.PARTY}<br>General: ${element.GENERAL}<br>Postal: ${element.POSTAL}`);
         } else {
             count += element.TOTAL;
         }
@@ -111,15 +114,17 @@ async function pieChart(url, ac_n, id) {
 
     const layout = {
         showlegend: true,
+        automargin: true,
         legend: {
             "orientation": "h",
             x: 0,
-            y: 1.5
+            y: -0.5
         },
         font: {
             family: 'Lato, sans-serif',
             color: 'rgba(245,246,249,1)'
         },
+        height: 500,
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)'
     };

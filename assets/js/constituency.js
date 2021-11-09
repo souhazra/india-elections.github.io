@@ -144,6 +144,62 @@ async function bc1(row, f, t, title, id) {
 }
 
 
+async function wf1(row, f, t, title, id) {
+    let plotData = [];
+
+
+    // console.log(row);
+
+
+    for (let i = f; i <= t; i++) {
+        const newObj = {};
+
+        newObj.measure = [];
+        newObj.x = [];
+        newObj.y = [];
+        newObj.type = "waterfall";
+        let data = row[i].split(',');
+        newObj.name = data[0];
+        for (let j = 1; j < data.length; j++) {
+            if (data[j] > 0) {
+                newObj.y.push(data[j]);
+                newObj.x.push(sex[j - 1])
+                if(sex[j - 1] === 'total') newObj.measure.push('total');
+                else newObj.measure.push('relative');
+            }
+        }
+        plotData.push(newObj);
+    }
+
+
+
+    const layout = {
+        title: title,
+        showlegend: true,
+        hovermode: 'closest',
+        automargin: true,
+        legend: {
+            "orientation": "h",
+            x: 0,
+            y: -0.3
+        },
+        font: {
+            family: 'Lato, sans-serif',
+            color: 'rgba(245,246,249,1)'
+        },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)'
+    };
+    const config = {
+        responsive: true,
+        displayModeBar: false
+    };
+
+
+    Plotly.newPlot(id, plotData, layout, config);
+}
+
+
 async function bc2(row, f, t, title, id) {
     let plotData = [];
 
@@ -217,7 +273,7 @@ async function Chart(url, ac_n) {
     // console.log(row)
     bc1(row, 4, 8, 'Candidate', 'con1');
     bc1(row, 10, 13, 'Electors', 'con2');
-    bc1(row, 16, 16, 'Voters', 'con3');
+    wf1(row, 16, 16, 'Voters', 'con3');
     bc2(row, 22, 31, 'Votes', 'con4');
     table(row);
 }
