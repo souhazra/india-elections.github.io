@@ -119,7 +119,7 @@ async function pc1(url, no, id) {
     plotData.push(newObj);
 
     const layout = {
-        title: 'NO. of Contestants in a Constituency',
+        title: 'No. of Contestants in a Constituency',
         showlegend: true,
         automargin: true,
         legend: {
