@@ -177,6 +177,15 @@ input[type="checkbox"]:checked+label::before {
 }
 
 /* Data Table */
+
+.dataTables_wrapper {
+    overflow-x: scroll;
+}
+
+.dataTables_wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
 .odd {
     color: white;
 }
@@ -212,4 +221,8 @@ select {
 
 option {
     background-color: #2f3640;
+}
+
+.dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate {
+    color: white;
 }
