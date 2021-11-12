@@ -155,6 +155,66 @@ async function bc1(url, no, id) {
 
     Plotly.newPlot(id, plotData, layout, config);
 }
+
+
+async function wf1(url, no, id) {
+    let plotData = [];
+    const response = await fetch(url);
+    let data = await response.text();
+    const dataset = data.split("@").splice(1);
+    const row = dataset[no];
+    const d = row.split('\n').splice(1);
+    // console.log(d)
+    // console.log(dataset)
+
+
+    let i = d.length - 1;
+    let t = d[i].split(",").splice(1);
+    const newObj = {};
+
+    newObj.y = [];
+    newObj.x = ['Gen', 'SC', 'ST', 'Total'];
+    newObj.measure = ['relative','relative','relative','total']
+    newObj.type = "waterfall";
+
+
+    // console.log(t)
+    newObj.name = t[0];
+    for (let j = 1; j <= t.length; j++) {
+        newObj.y.push(t[j]);
+    }
+    plotData.push(newObj);
+
+
+    let T = d[0].split(',');
+
+    const layout = {
+        title: T[1],
+        showlegend: false,
+        automargin: true,
+        hovermode: 'closest',
+        legend: {
+            "orientation": "h",
+            x: 0,
+            y: -0.3
+        },
+        font: {
+            family: 'Lato, sans-serif',
+            color: 'rgba(245,246,249,1)'
+        },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)'
+    };
+    const config = {
+        responsive: true,
+        displayModeBar: false
+    };
+
+
+    Plotly.newPlot(id, plotData, layout, config);
+}
+
+
 async function bc2(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
@@ -189,8 +249,8 @@ async function bc2(url, no, id) {
     let T = d[0].split(',');
 
     const layout = {
-        title: T[1],
-        showlegend: true,
+        title: 'Rejected Votes Percentage(to postal votes)',
+        showlegend: false,
         automargin: true,
         hovermode: 'closest',
         legend: {
@@ -222,8 +282,12 @@ bc3("./datasets/csv/Electors_Data_Summary.csv", 8, "eds4");
 pc1("./datasets/csv/Electors_Data_Summary.csv", 9, "eds5");
 pc1("./datasets/csv/Electors_Data_Summary.csv", 10, "eds6");
 bc1("./datasets/csv/Electors_Data_Summary.csv", 1, "eds7");
-bc1("./datasets/csv/Electors_Data_Summary.csv", 2, "eds8");
-bc1("./datasets/csv/Electors_Data_Summary.csv", 3, "eds9");
-bc1("./datasets/csv/Electors_Data_Summary.csv", 4, "eds10");
-bc1("./datasets/csv/Electors_Data_Summary.csv", 5, "eds11");
-bc2("./datasets/csv/Electors_Data_Summary.csv", 5, "eds12");
+wf1("./datasets/csv/Electors_Data_Summary.csv", 1, "eds8");
+bc1("./datasets/csv/Electors_Data_Summary.csv", 2, "eds9");
+wf1("./datasets/csv/Electors_Data_Summary.csv", 2, "eds10");
+bc1("./datasets/csv/Electors_Data_Summary.csv", 3, "eds11");
+wf1("./datasets/csv/Electors_Data_Summary.csv", 3, "eds12");
+bc1("./datasets/csv/Electors_Data_Summary.csv", 4, "eds13");
+wf1("./datasets/csv/Electors_Data_Summary.csv", 4, "eds14");
+bc1("./datasets/csv/Electors_Data_Summary.csv", 5, "eds15");
+bc2("./datasets/csv/Electors_Data_Summary.csv", 5, "eds16");

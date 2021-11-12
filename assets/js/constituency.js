@@ -44,12 +44,12 @@ function searchBar() {
 
 async function table(row) {
 
-    const arr = [['wpos','wparty','wcan','wvotes'],['rpos','rparty','rcan','rvotes']];
-    
-    for(let i = 42; i <= 43; i++) {
+    const arr = [['wpos', 'wparty', 'wcan', 'wvotes'], ['rpos', 'rparty', 'rcan', 'rvotes']];
+
+    for (let i = 42; i <= 43; i++) {
         let data = row[i].split(',');
-        for(let j = 0; j < data.length; j++) {
-            let d = document.querySelector(`#${arr[i-42][j]}`);
+        for (let j = 0; j < data.length; j++) {
+            let d = document.querySelector(`#${arr[i - 42][j]}`);
             d.innerHTML = data[j];
         }
     }
@@ -90,6 +90,7 @@ async function addOptions() {
 
 const colours = { BJP: "rgb(255, 165, 0)", AITC: "rgb(0,255,0)", NOTA: "rgb(255,0,0)", IND: "rgb(0,0,255)", RSSCMJP: "rgb(0,255,255)" }
 const sex = ["male", "female", "third gender", "total"]
+
 
 async function bc1(row, f, t, title, id) {
     let plotData = [];
@@ -144,6 +145,57 @@ async function bc1(row, f, t, title, id) {
 }
 
 
+async function bc3(row, f, t, title, id) {
+    let plotData = [];
+
+
+    console.log(row);
+
+    const newObj = {};
+
+    newObj.x = [];
+    newObj.y = [];
+    newObj.type = "bar";
+    data = row[f + 1].split(',');
+    console.log(data)
+    for(let i = 0; i < data.length; i+=2) {
+        newObj.x.push(data[i]);
+        newObj.y.push(data[i+1]);
+    }
+
+    console.log(newObj)
+    plotData.push(newObj);
+
+
+    const layout = {
+        title: 'Polling Station',
+        showlegend: false,
+        hovermode: 'closest',
+        automargin: true,
+        legend: {
+            "orientation": "h",
+            x: 0,
+            y: -0.3
+        },
+        font: {
+            family: 'Lato, sans-serif',
+            color: 'rgba(245,246,249,1)'
+        },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)'
+    };
+    const config = {
+        responsive: true,
+        displayModeBar: false
+    };
+
+
+    Plotly.newPlot(id, plotData, layout, config);
+    let text = document.querySelector('#bar-text');
+    text.innerHTML = `${row[t-1]}<br>${row[t]}`;
+}
+
+
 async function wf1(row, f, t, title, id) {
     let plotData = [];
 
@@ -164,7 +216,7 @@ async function wf1(row, f, t, title, id) {
             if (data[j] > 0) {
                 newObj.y.push(data[j]);
                 newObj.x.push(sex[j - 1])
-                if(sex[j - 1] === 'total') newObj.measure.push('total');
+                if (sex[j - 1] === 'total') newObj.measure.push('total');
                 else newObj.measure.push('relative');
             }
         }
@@ -175,7 +227,7 @@ async function wf1(row, f, t, title, id) {
 
     const layout = {
         title: title,
-        showlegend: true,
+        showlegend: false,
         hovermode: 'closest',
         automargin: true,
         legend: {
@@ -274,7 +326,8 @@ async function Chart(url, ac_n) {
     bc1(row, 4, 8, 'Candidate', 'con1');
     bc1(row, 10, 13, 'Electors', 'con2');
     wf1(row, 16, 16, 'Voters', 'con3');
-    bc2(row, 22, 31, 'Votes', 'con4');
+    bc3(row, 33, 36, 'Voters', 'con4');
+    bc2(row, 22, 31, 'Votes', 'con5');
     table(row);
 }
 
