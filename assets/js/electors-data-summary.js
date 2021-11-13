@@ -29,7 +29,7 @@ async function pc1(url, no, id) {
         legend: {
             "orientation": "h",
             x: 0,
-            y: 1.5
+            y: -0.3
         },
         font: {
             family: 'Lato, sans-serif',
