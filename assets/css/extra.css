@@ -184,7 +184,7 @@ input[type="checkbox"]:checked+label::before {
 
 .dataTables_wrapper::-webkit-scrollbar {
     display: none;
-  }
+}
 
 .odd {
     color: white;
@@ -223,6 +223,21 @@ option {
     background-color: #2f3640;
 }
 
-.dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate {
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
     color: white;
+}
+
+.phase .td {
+    padding: 0 !important;
+}
+
+
+.phase {
+    border: 1px solid black;
+}
+
+
+.phase .tr {
+    height: 5px !important;
 }
