@@ -186,6 +186,15 @@ input[type="checkbox"]:checked+label::before {
     display: none;
 }
 
+
+.indexTable {
+    overflow-x: scroll;
+}
+
+.indexTable::-webkit-scrollbar {
+    display: none;
+}
+
 .odd {
     color: white;
 }
