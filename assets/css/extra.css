@@ -196,11 +196,13 @@ input[type="checkbox"]:checked+label::before {
 }
 
 .odd {
-    color: white;
+    color: black;
+    background-color: white !important;
 }
 
 .even {
-    color: black;
+    color: white;
+    background-color: #343a40 !important;
 }
 
 table.dataTable thead .sorting:before,

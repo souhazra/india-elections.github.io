@@ -2,7 +2,7 @@ async function bc1(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const dataset = data.split("<br>");
+    const dataset = data.split("<>");
     const rows = dataset[no].split("\n").splice(1);
     // console.log(rows)
     // console.log(dataset)
@@ -56,7 +56,7 @@ async function wf1(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const dataset = data.split("<br>");
+    const dataset = data.split("<>");
     const rows = dataset[no].split("\n").splice(1);
     // console.log(rows)
     // console.log(dataset)

@@ -2,7 +2,7 @@ async function pc1(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const dataset = data.split("@").splice(1);
+    const dataset = data.split("<>").splice(1);
     const row = dataset[no];
     const d = row.split(',').splice(1);
     // console.log(d)
@@ -52,7 +52,7 @@ async function bc3(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const dataset = data.split("@").splice(1);
+    const dataset = data.split("<>").splice(1);
     const row = dataset[no];
     const d = row.split(',').splice(1);
     // console.log(d)
@@ -102,7 +102,7 @@ async function bc1(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const dataset = data.split("@").splice(1);
+    const dataset = data.split("<>").splice(1);
     const row = dataset[no];
     const d = row.split('\n').splice(1);
     // console.log(d)
@@ -161,7 +161,7 @@ async function wf1(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const dataset = data.split("@").splice(1);
+    const dataset = data.split("<>").splice(1);
     const row = dataset[no];
     const d = row.split('\n').splice(1);
     // console.log(d)
@@ -219,7 +219,7 @@ async function bc2(url, no, id) {
     let plotData = [];
     const response = await fetch(url);
     let data = await response.text();
-    const dataset = data.split("@").splice(1);
+    const dataset = data.split("<>").splice(1);
     const row = dataset[no];
     const d = row.split('\n').splice(1);
     // console.log(d)

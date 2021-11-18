@@ -1,3 +1,17 @@
+const colours = { BJP: "rgb(255, 165, 0)", AITC: "rgb(0,255,0)", NOTA: "rgb(255,0,0)", IND: "rgb(0,0,255)", RSSCMJP: "rgb(0,255,255)" };
+const sex = ["male", "female", "third gender", "total"];
+const parties = {
+    "All India Trinamool Congress": "1.svg",
+    "Bharatiya Janata Party": "2.svg",
+    "Bahujan Samaj Party": "3.PNG",
+    "Communist Party of India": "4.PNG",
+    "Communist Party of India(Marxist)": "5.svg",
+    "Indian National Congress": "6.svg",
+    "National People's Party": "7.svg",
+    "Other": "NA_cap_icon.svg"
+};
+
+
 function searchBar() {
     const selected = document.querySelector(".selected");
     const optionsContainer = document.querySelector(".options-container");
@@ -59,16 +73,23 @@ async function table(row) {
 async function card(row) {
 
     const arr = ['win', 'runner'];
-    console.log(row)
 
     for (let i = 42; i < 44; i++) {
         let data = row[i].split(',');
-        console.log(data)
         let text = "";
-        for (let j = 1; j < data.length; j++) {
-            if(j === 3) text = text + 'Votes: ' + data[j];
-            else text = text + data[j] + '<br>';
+        let img = document.querySelectorAll('.image');
+        if (data[1] in parties) {
+            img[i-42].innerHTML = `<img src="./assets/img/parties/${parties[data[1]]}" alt=""
+            class="hicon rounded bg-grey2">`;
         }
+        else {
+            img[i-42].innerHTML = `<img src="./assets/img/parties/${parties["Other"]}" alt=""
+            class="hicon rounded bg-grey2">`;
+        }
+            for (let j = 1; j < data.length; j++) {
+                if (j === 3) text = text + 'Votes: ' + data[j];
+                else text = text + data[j] + '<br>';
+            }
         let d = document.querySelector(`#${arr[i - 42]}`);
         d.innerHTML = text;
     }
@@ -101,21 +122,12 @@ async function addOptions() {
         iDiv.appendChild(div3);
         document.querySelector('.options-container').appendChild(iDiv);
     })
-    // console.log(rows);
     searchBar();
 }
-
-// addOptions();
-
-const colours = { BJP: "rgb(255, 165, 0)", AITC: "rgb(0,255,0)", NOTA: "rgb(255,0,0)", IND: "rgb(0,0,255)", RSSCMJP: "rgb(0,255,255)" }
-const sex = ["male", "female", "third gender", "total"]
 
 
 async function bc1(row, f, t, title, id) {
     let plotData = [];
-
-
-    // console.log(row);
 
 
     for (let i = f; i <= t; i++) {
@@ -167,22 +179,18 @@ async function bc1(row, f, t, title, id) {
 async function bc3(row, f, t, title, id) {
     let plotData = [];
 
-
-    // console.log(row);
-
     const newObj = {};
 
     newObj.x = [];
     newObj.y = [];
     newObj.type = "bar";
     data = row[f + 1].split(',');
-    console.log(data)
-    for(let i = 0; i < data.length; i+=2) {
+    for (let i = 0; i < data.length; i += 2) {
         newObj.x.push(data[i]);
-        newObj.y.push(data[i+1]);
+        newObj.y.push(data[i + 1]);
     }
 
-    // console.log(newObj)
+
     plotData.push(newObj);
 
 
@@ -211,15 +219,12 @@ async function bc3(row, f, t, title, id) {
 
     Plotly.newPlot(id, plotData, layout, config);
     let text = document.querySelector('#bar-text');
-    text.innerHTML = `${row[t-1]}<br>${row[t]}`;
+    text.innerHTML = `${row[t - 1]}<br>${row[t]}`;
 }
 
 
 async function wf1(row, f, t, title, id) {
     let plotData = [];
-
-
-    // console.log(row);
 
 
     for (let i = f; i <= t; i++) {
@@ -274,9 +279,6 @@ async function wf1(row, f, t, title, id) {
 async function bc2(row, f, t, title, id) {
     let plotData = [];
 
-
-    // console.log(row);
-
     const newObj = {};
 
     newObj.x = [];
@@ -327,21 +329,18 @@ async function bc2(row, f, t, title, id) {
 async function Chart(url, ac_n) {
     const response = await fetch(url);
     let data = await response.text();
-    let dataset = data.split('\n<br>');
-    // console.log(data)
-    // console.log(dataset)
+    let dataset = data.split('\n<>');
 
     let row;
 
     for (let i = 0; i < dataset.length; i++) {
         let t = dataset[i].split('\n');
-        // console.log(t)
         if (t[0].split('-')[2] === ac_n) {
             row = t;
             break;
         }
     }
-    // console.log(row)
+    
     bc1(row, 4, 8, 'Candidate', 'con1');
     bc1(row, 10, 13, 'Electors', 'con2');
     wf1(row, 16, 16, 'Voters', 'con3');
