@@ -250,3 +250,7 @@ option {
 .phase .tr {
     height: 5px !important;
 }
+
+.hicon {
+    height: 110px;
+}

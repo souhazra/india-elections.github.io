@@ -56,6 +56,25 @@ async function table(row) {
 }
 
 
+async function card(row) {
+
+    const arr = ['win', 'runner'];
+    console.log(row)
+
+    for (let i = 42; i < 44; i++) {
+        let data = row[i].split(',');
+        console.log(data)
+        let text = "";
+        for (let j = 1; j < data.length; j++) {
+            if(j === 3) text = text + 'Votes: ' + data[j];
+            else text = text + data[j] + '<br>';
+        }
+        let d = document.querySelector(`#${arr[i - 42]}`);
+        d.innerHTML = text;
+    }
+}
+
+
 async function addOptions() {
     const names = await fetch('datasets/csv/List_of_Successful_Candidates.csv');
     const data = await names.text();
@@ -149,7 +168,7 @@ async function bc3(row, f, t, title, id) {
     let plotData = [];
 
 
-    console.log(row);
+    // console.log(row);
 
     const newObj = {};
 
@@ -163,7 +182,7 @@ async function bc3(row, f, t, title, id) {
         newObj.y.push(data[i+1]);
     }
 
-    console.log(newObj)
+    // console.log(newObj)
     plotData.push(newObj);
 
 
@@ -328,7 +347,8 @@ async function Chart(url, ac_n) {
     wf1(row, 16, 16, 'Voters', 'con3');
     bc3(row, 33, 36, 'Voters', 'con4');
     bc2(row, 22, 31, 'Votes', 'con5');
-    table(row);
+    // table(row);
+    card(row);
 }
 
 
