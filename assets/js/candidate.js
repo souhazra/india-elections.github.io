@@ -108,12 +108,7 @@ async function wf1(url, no, id) {
 
 
 bc1("datasets/csv/Candidate_data_summary.csv", 0, can1);
-wf1("datasets/csv/Candidate_data_summary.csv", 0, can2);
-bc1("datasets/csv/Candidate_data_summary.csv", 1, can3);
-wf1("datasets/csv/Candidate_data_summary.csv", 1, can4);
-bc1("datasets/csv/Candidate_data_summary.csv", 2, can5);
-wf1("datasets/csv/Candidate_data_summary.csv", 2, can6);
-bc1("datasets/csv/Candidate_data_summary.csv", 3, can7);
-wf1("datasets/csv/Candidate_data_summary.csv", 3, can8);
-bc1("datasets/csv/Candidate_data_summary.csv", 4, can9);
-wf1("datasets/csv/Candidate_data_summary.csv", 4, can10);
+bc1("datasets/csv/Candidate_data_summary.csv", 1, can2);
+bc1("datasets/csv/Candidate_data_summary.csv", 2, can3);
+bc1("datasets/csv/Candidate_data_summary.csv", 3, can4);
+bc1("datasets/csv/Candidate_data_summary.csv", 4, can5);

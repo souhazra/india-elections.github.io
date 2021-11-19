@@ -65,6 +65,7 @@ async function radar(url, no, id) {
         newObj.theta = [];
         newObj.r = [];
         newObj.text = [];
+        newObj.hoverinfo = 'text';
         // newObj.marker = {color: '#a9afbbd1'}
 
         for (let i = 0; i <= no; i++) {
@@ -127,8 +128,8 @@ async function bc2(url, no, id) {
     const newObj = {};
 
     // newObj.measure = ['relative','relative','relative','total']
-    newObj.x = ["male", "female", "third gender", 'total'];
-    newObj.y = [t[1], t[2], t[3], t[4]];
+    newObj.x = ["male", "female", "third gender"];
+    newObj.y = [t[1], t[2], t[3]];
     newObj.type = "bar";
 
 

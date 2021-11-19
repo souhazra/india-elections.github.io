@@ -5,7 +5,7 @@ const parties = {
     "Bharatiya Janata Party": "2.svg",
     "Bahujan Samaj Party": "3.PNG",
     "Communist Party of India": "4.PNG",
-    "Communist Party of India(Marxist)": "5.svg",
+    "Communist Party of India (Marxist)": "5.svg",
     "Indian National Congress": "6.svg",
     "National People's Party": "7.svg",
     "Other": "NA_cap_icon.svg"

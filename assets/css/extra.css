@@ -255,4 +255,10 @@ option {
 
 .hicon {
     height: 110px;
+    max-width: 110px;
+}
+
+.hwidget {
+    height: 70px;
+    max-width: 70px;
 }
