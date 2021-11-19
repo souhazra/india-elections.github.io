@@ -2,21 +2,20 @@ async function addData() {
     const names = await fetch('datasets/csv/abbreviation.csv');
     const data = await names.text();
     const rows = data.split('\n').splice(1);
-    console.log(rows);
-    rows.forEach(ele => {
-        let r = ele.split(',');
-        let iDiv = document.createElement('tr');
-        console.log(r);
-        r.forEach(e => {
-            let t1 = document.createElement('td');
-            t1.innerText = e;
-            iDiv.appendChild(t1);
-        })
-        document.querySelector('tbody').appendChild(iDiv);
-    })
+    // console.log(rows);
+    let des = document.querySelectorAll('.card-category');
+    let abb = document.querySelectorAll('.card-title');
+
+    for(let i = 0; i < rows.length; i++) {
+        let d = rows[i].split(',');
+        // console.log(d);
+        abb[i].innerText = d[0];
+        des[i].innerText = d[1];
+    }
+    
 }
 
-// addData();
-$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
+addData();
+// $(document).ready( function () {
+//     $('#myTable').DataTable();
+// } );
