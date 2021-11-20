@@ -1,20 +1,20 @@
 const parties = {
     "AITC": "1.svg",
     "BJP": "2.svg",
-    "BSP": "3.PNG",
-    "CPI": "4.PNG",
+    "BSP": "3.png",
+    "CPI": "4.png",
     "CPI(M)": "5.svg",
     "INC": "6.svg",
     "NPEP": "7.svg",
-    "AIFB": "8.PNG",
-    "RSP": "9.PNG",
+    "AIFB": "8.png",
+    "RSP": "9.png",
     "AIMIM": "10.svg",
     "AJSUP": "11.svg",
     "CPI(ML)(L)": "12.svg",
     "IUML": "13.svg",
-    "JD(U)": "14.PNG",
-    "LJP": "15.PNG",
-    "ABHM": "16.PNG",
+    "JD(U)": "14.png",
+    "LJP": "15.png",
+    "ABHM": "16.png",
     "AIMF": "17.JPG",
     "AMB": "18.svg",
     "APoI": "NA_cap_icon.svg",
@@ -24,7 +24,7 @@ const parties = {
     "BMUP": "NA_cap_icon.svg",
     "BNARP": "NA_cap_icon.svg",
     "BTP": "NA_cap_icon.svg",
-    "CPIM": "26.PNG",
+    "CPIM": "26.png",
     "DSPI": "NA_cap_icon.svg",
     "GMM": "NA_cap_icon.svg",
     "HAMS": "NA_cap_icon.svg",
@@ -73,7 +73,7 @@ async function addData() {
 
     for (let i = 0; i < rows.length; i++) {
         let d = rows[i].split(',');
-        console.log(d)
+        // console.log(d)
         abb[i].innerText = d[1];
         type[i].innerText = d[2];
         images[i].innerHTML = `<img src="./assets/img/parties/${parties[d[1]]}" alt=""
