@@ -66,7 +66,7 @@ async function addData() {
     const names = await fetch('datasets/csv/allParties.csv');
     const data = await names.text();
     const rows = data.split('\n');
-    console.log(rows);
+    // console.log(rows);
     let abb = document.querySelectorAll(".card-title");
     let type = document.querySelectorAll(".card-category");
     let images = document.querySelectorAll(".bubble-shadow-small");
