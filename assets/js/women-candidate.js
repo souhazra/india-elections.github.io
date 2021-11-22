@@ -18,7 +18,7 @@ async function addData() {
 
 // addData();
 $(document).ready(function() {
-    var groupColumn = 9;
+    var groupColumn = 8;
     var table = $('#myTable').DataTable({
         "columnDefs": [
             { "visible": false, "targets": groupColumn }
@@ -33,7 +33,7 @@ $(document).ready(function() {
             api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
                 if ( last !== group ) {
                     $(rows).eq( i ).before(
-                        '<tr class="group"><td colspan="9" class="bg-dark">'+group+'</td></tr>'
+                        '<tr class="group"><td colspan="9" class="bg-secondary">'+group+'</td></tr>'
                     );
  
                     last = group;
